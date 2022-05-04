@@ -63,8 +63,9 @@
   (setq org-startup-with-inline-images t))
 
 (org-babel-do-load-languages
- `org-babel-load-languages
- `((plantuml . t)))
+    'org-babel-load-languages
+    '((mermaid . t)
+      (scheme . t)))
 
 (setq org-plantuml-jar-path
   (expand-file-name "~/.emacs.d/plantuml.jar"))

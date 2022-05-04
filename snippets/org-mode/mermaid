@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: mermaid
+# key: mermaid
+# --
+#+begin_src mermaid :file ./media/`(format-time-string "%s")`.png :background-color transparent :theme neutral
+`%`$0
+#+end_src
