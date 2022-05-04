@@ -19,8 +19,10 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 16)
-       doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 16))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 18)
+      doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 18)
+      doom-unicode-font (font-spec :family "Hack Nerd Font Mono" :size 18))
+
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -49,10 +51,8 @@
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
-;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-;;
 (after! evil
   (setq evil-escape-delay 0.5)
   (setq evil-escape-key-sequence "jj"))
@@ -61,3 +61,13 @@
   (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
   (setq org-startup-with-inline-images t)
   (setq org-startup-with-inline-images t))
+
+(org-babel-do-load-languages
+ `org-babel-load-languages
+ `((plantuml . t)))
+
+(setq org-plantuml-jar-path
+  (expand-file-name "~/.emacs.d/plantuml.jar"))
+
+;; (after! ob-mermaid
+;;   (setq ob-mermaid-cli-path "~/AppData/Roaming/npm/mmdc"))
