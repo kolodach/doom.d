@@ -19,9 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 18)
-      doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 18)
-      doom-unicode-font (font-spec :family "Hack Nerd Font Mono" :size 18))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 14)
+      doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 14))
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -60,6 +59,8 @@
 (after! org
   (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
   (setq org-startup-with-inline-images t)
+  (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
+  `org-download-enable
   (setq org-startup-with-inline-images t))
 
 (org-babel-do-load-languages
@@ -70,5 +71,14 @@
 (setq org-plantuml-jar-path
   (expand-file-name "~/.emacs.d/plantuml.jar"))
 
-;; (after! ob-mermaid
-;;   (setq ob-mermaid-cli-path "~/AppData/Roaming/npm/mmdc"))
+(after! smooth-scrolling
+  (smooth-scrolling-mode 1))
+
+(let ((my-path "C:\\Users\\Oleh_Bezhenar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64"))
+      (setenv "PATH" (concat my-path ":" (getenv "PATH")))
+      (add-to-list 'exec-path my-path))
+;; (let ((my-path "C:\\texlive\\2022\\bin\\win32"))
+;;      (setenv "PATH" (concat my-path ":" (getenv "PATH")))
+;;      (add-to-list 'exec-path my-path))
+;; (setenv "PATH" (concat "path-of-your-dvipng" ";" (getenv "PATH")))
+;; (add-to-list 'exec-path "path-of-your-dvipng")
