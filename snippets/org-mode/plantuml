@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: PlantUML Diagram block
+# key: plantuml
+# condition: t
+# --
+#+begin_src plantuml :file `(expand-file-name (getenv "TMP"))`/`(format-time-string "%s")`.png
+@startmindmap
+!theme cyborg-outline
+`%`$0
+@endmindmap
+#+end_src

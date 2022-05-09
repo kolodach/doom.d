@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
-# name: mermaid
+# name: Mermaid UML Diagram block
 # key: mermaid
 # --
-#+begin_src mermaid :file ./media/`(format-time-string "%s")`.png :background-color transparent :theme neutral
+#+begin_src mermaid :background-color transparent :theme dark :file `(expand-file-name (getenv "TMP"))`/`(format-time-string "%s")`.png
 `%`$0
 #+end_src

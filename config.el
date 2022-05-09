@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 14)
-      doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 14))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 14 :weight 'semi-bold)
+      doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 14 :weight 'semi-bold))
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -57,7 +57,9 @@
   (setq evil-escape-key-sequence "jj"))
 
 (after! org
-  (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
+  (setq org-agenda-files (list
+                          (directory-files-recursively "~/org/" "\\.org$")
+                          (directory-files-recursively "~/org-me/" "\\.org$")))
   (setq org-startup-with-inline-images t)
   (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
   `org-download-enable
@@ -66,17 +68,38 @@
 (org-babel-do-load-languages
     'org-babel-load-languages
     '((mermaid . t)
+      (plantuml . t)
       (scheme . t)))
 
 (setq org-plantuml-jar-path
-  (expand-file-name "~/.emacs.d/plantuml.jar"))
+  (expand-file-name "C:\\Users\\Oleh_Bezhenar\\.emacs.d\\plantuml.jar"))
+(setq plantuml-jar-path
+      (expand-file-name "C:\\Users\\Oleh_Bezhenar\\.emacs.d\\plantuml.jar"))
+
+(let ((path (expand-file-name "C:\\Users\\Oleh_Bezhenar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64")))
+      (setenv "PATH" (concat path ":" (getenv "PATH")))
+      (add-to-list 'exec-path path))
+
+(let ((path (expand-file-name "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath")))
+      (setenv "PATH" (concat path ":" (getenv "PATH")))
+      (add-to-list 'exec-path path))
+
+;; (setenv "PATH" (concat (expand-file-name "C:\\Users\\Oleh_Bezhenar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64") ":" (getenv "PATH")))
+;; (add-to-list 'exec-path (expand-file-name "C:\\Users\\Oleh_Bezhenar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64"))
+
+(add-to-list
+  'org-src-lang-modes '("plantuml" . plantuml))
 
 (after! smooth-scrolling
   (smooth-scrolling-mode 1))
 
-(let ((my-path "C:\\Users\\Oleh_Bezhenar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64"))
-      (setenv "PATH" (concat my-path ":" (getenv "PATH")))
-      (add-to-list 'exec-path my-path))
+;; (let ((path1 (expand-file-name "C:\\Users\\Oleh_Bezhenar\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64")))
+;;       (setenv "PATH" (concat path1 ":" (getenv "PATH")))
+;;       (add-to-list 'exec-path path1))
+;; (let ((path (expand-file-name "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath")))
+;;       (setenv "PATH" (concat path ":" (getenv "PATH")))
+;;       (add-to-list 'exec-path path))
+;; C:\Program Files (x86)\Common Files\Oracle\Java\javapath
 ;; (let ((my-path "C:\\texlive\\2022\\bin\\win32"))
 ;;      (setenv "PATH" (concat my-path ":" (getenv "PATH")))
 ;;      (add-to-list 'exec-path my-path))
