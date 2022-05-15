@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 16)
-       doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 16))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 14)
+       doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -53,11 +53,17 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;;
+
+;; Key delay up to 0.5 sec to have more time to think.
 (after! evil
   (setq evil-escape-delay 0.5)
   (setq evil-escape-key-sequence "jj"))
 
+;; org mode config
 (after! org
-  (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
+  (setq org-agenda-files (directory-files-recursively "$ORGDIR" "\\.org$"))
   (setq org-startup-with-inline-images t)
-  (setq org-startup-with-inline-images t))
+  (setq org-startup-with-inline-images t)
+  (use-package org-download)
+  (setq org-download-screenshot-method "screencapture -i %s")
+  (setq-default org-download-image-dir "$ORGDIR/media"))
