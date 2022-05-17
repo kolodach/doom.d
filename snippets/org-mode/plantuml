@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: PlantUML Diagram block
+# key: plantuml
+# condition: t
+# --
+#+begin_src plantuml :file `(expand-file-name (getenv "ORGDIR"))`/media/`(format-time-string "%s")`.png
+@startuml
+!theme cyborg-outline
+`%`$0
+@enduml
+#+end_src

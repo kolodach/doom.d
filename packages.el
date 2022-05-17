@@ -50,3 +50,6 @@
 ;(unpin! t)
 
 (package! org-download)
+(package! ob-mermaid)
+(package! mermaid-mode)
+
